@@ -1,0 +1,17 @@
+* { margin: 0; padding: 0; }
+
+$mobile-navigation-width: (
+  0px: 270px,
+  568px: 518px
+);
+
+$mobile-navigation-levels: 4;
+
+@import '_mobile-navigation.css.scss';
+
+// Demo styles
+body { font-size: 1rem; font-family: sans-serif; }
+p { line-height: 1.65; margin: 1rem auto; width: 90%; }
+a, a:hover, a:visited { color: #3b5998; text-decoration: none; border-bottom: 1px solid rgba(#3b5998, .35); };
+a:hover { border-color: #3b5998; }
+.site-container__fixed { text-transform: uppercase; text-align: center; font-weight: 600; line-height: 50px; }

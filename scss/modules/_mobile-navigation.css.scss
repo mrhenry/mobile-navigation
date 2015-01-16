@@ -1,0 +1,77 @@
+@import '../_settings.scss';
+
+@mixin _mobile-navigation-size ($width) {
+  .mod-mobile-navigation {
+    right: -1 * ($mobile-navigation-levels - 1) * $width;
+    width: 1 * $width * $mobile-navigation-levels;
+  }
+
+  .mod-site-container {
+    .show-mobile-navigation & {
+      transform: translate3d(-1 * $width, 0, 0);
+    }
+  }
+
+  .mobile-navigation__level {
+    width: 100% / $mobile-navigation-levels;
+  }
+}
+
+@if type-of($mobile-navigation-width) == number {
+  @include _mobile-navigation-size($mobile-navigation-width);
+} @else {
+  @each $breakpoint, $width in $mobile-navigation-width {
+    @media only all and (min-width: $breakpoint) {
+      @include _mobile-navigation-size($width);
+    }
+  }
+}
+
+.mod-mobile-navigation {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: #ddd;
+  z-index: 10;
+
+  @media only all and (min-width: $mobile-navigation-breakpoint) { display: none; }
+}
+
+.mobile-navigation__level {
+  float: left;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  position: relative;
+}
+
+//
+// Everything below is merely for showing the correct (sub-)navigation through CSS classes toggling
+//
+
+.mod-site-container,
+.mod-mobile-navigation {
+  @media only all and (max-width: $mobile-navigation-breakpoint - 1px) {
+    transition: transform $mobile-navigation-animation-time $mobile-navigation-animation-easing;
+  }
+}
+
+// .show-mobile-navigation gets toggled on the document body
+.show-mobile-navigation {
+  overflow: hidden;
+
+  .mod-site-container {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+  }
+}
+
+@if $mobile-navigation-levels > 1 {
+  @for $i from 2 through $mobile-navigation-levels {
+    [data-mobile-navigation-level="#{$i}"] {
+      .mod-mobile-navigation {
+        transform: translate3d(-100% / $mobile-navigation-levels * ($i - 1), 0, 0);
+      }
+    }
+  }
+}
+

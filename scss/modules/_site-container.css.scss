@@ -1,0 +1,63 @@
+@import '../_settings.scss';
+
+html,
+body {
+  cursor: default;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+.mod-site-container {
+  background-color: #fff; // the background you'd want to give to the body element - DON'T make transparent
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 20;
+}
+
+.site-container__fixed {
+  @media only all and (max-width: $mobile-navigation-breakpoint - 1) {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+    height: $mobile-navigation-fixed-height;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 20;
+  }
+}
+
+.site-container__mobile-navigation-toggle {
+  border: 0;
+  bottom: 0;
+  display: block;
+  line-height: $mobile-navigation-fixed-height;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  text-decoration: none;
+  width: $mobile-navigation-fixed-height;
+
+  &:hover,
+  &:visited {
+    border: 0;
+  }
+
+  @media only all and (min-width: $mobile-navigation-breakpoint) { display: none; }
+}
+
+.site-container__scrollable {
+  @media only all and (max-width: $mobile-navigation-breakpoint - 1) {
+    box-sizing: border-box;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    padding-top: $mobile-navigation-fixed-height;
+    position: relative;
+    z-index: 10;
+  }
+}

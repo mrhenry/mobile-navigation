@@ -1,0 +1,13 @@
+{
+  "name": "mobile-navigation",
+  "description": "A basic setup for a decent mobile navigation. Support for fixed elements across all viewports.",
+  "author": "Pieter Beulque <pieter@mrhenry.be>",
+  "private": "true",
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "latest",
+    "gulp-jsmin": "latest",
+    "gulp-rename": "^1.2.0",
+    "gulp-sass": "latest"
+  }
+}

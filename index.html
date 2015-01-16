@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <title>Mobile navigation</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimal-ui" />
+  <link rel="stylesheet" href="css/demo.css" />
+</head>
+<body>
+  <div class="mod-site-container">
+    <div class="site-container__fixed">
+      <span>Fixed header on mobile</span>
+      <a href="#" class="site-container__mobile-navigation-toggle js-mobile-navigation-toggle">&#9776;</a>
+    </div>
+    <div class="site-container__scrollable">
+      <p>
+        This is scrollable content. However, it's written so that inside this div you can have fixed elements too.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatem a natus, rerum illo aut eligendi.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum officia, provident ipsum fugiat! Nisi sit sunt vitae perferendis ullam quae, quidem, dolor tempora illum, neque odit ab esse! At distinctio omnis error cupiditate, esse, adipisci aliquid deserunt doloremque doloribus vero.
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ab nostrum veniam consequatur aliquam dolores, ex iure excepturi ducimus dicta aperiam doloribus accusamus voluptatum tempore, labore harum soluta quisquam error saepe quibusdam consequuntur deserunt explicabo culpa. Ratione maxime ut culpa fugiat animi tempore, doloribus voluptate veniam cupiditate. Nam ipsum aliquid deserunt accusantium eos, labore et impedit quisquam dolores. Aperiam ducimus repellat cumque explicabo perferendis itaque, vitae reprehenderit magnam esse quam eius pariatur deleniti iste odio illum reiciendis, quibusdam fugit officia totam necessitatibus expedita accusantium suscipit illo ad. Aliquam ad recusandae tenetur fugit autem nesciunt voluptatibus, suscipit cupiditate commodi. Saepe optio quia asperiores accusamus eos fugiat quidem nihil cumque, officiis sint placeat dignissimos nam quos aspernatur, et maiores vitae autem, iusto dolores!
+      </p>
+    </div>
+  </div>
+  <div class="mod-mobile-navigation js-mobile-navigation">
+    <div class="mobile-navigation__level">
+      <p><strong>Level 1</strong></p>
+      <p>
+        This is content that goes inside the mobile navigation
+      </p>
+      <p>
+        This type of navigation support multiple levels of subnavigation.
+      </p>
+      <p>
+        <a href="#2">Dig deeper</a>
+      </p>
+      <p>
+        <a href="#3">Hit rock bottom</a>
+      </p>
+    </div>
+    <div class="mobile-navigation__level">
+      <p><strong>Level 2</strong></p>
+      <p>
+        This is content that goes inside the mobile navigation on the second level
+      </p>
+      <p>
+        <a href="#" class="js-mobile-navigation-next">Dig deeper (without specifying level)</a>
+      </p>
+      <p>
+        The mobile navigation is scrollable horizontally!
+      </p>
+      <p>
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Dolorum officia, provident ipsum fugiat! Nisi sit sunt vitae perferendis ullam quae, quidem, dolor tempora illum, neque odit ab esse! At distinctio omnis error cupiditate, esse, adipisci aliquid deserunt doloremque doloribus vero.
+      </p>
+    </div>
+    <div class="mobile-navigation__level">
+      <p><strong>Level 3</strong></p>
+      <p>
+        This is content that goes inside the mobile navigation on the third level
+      </p>
+      <p>
+        <a href="#" class="js-mobile-navigation-previous">Go back (without specifying level)</a>
+      </p>
+      <p>
+        <a href="#1">Go back to first (by specifying level 1)</a>
+      </p>
+    </div>
+  </div>
+  <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+  <script type="text/javascript" src="js/mobile-navigation.js"></script>
+  <script type="text/javascript">
+    // This fakes the module pattern initialization, don't copy in real projects
+    (function () { var mobileNavigation = new MobileNavigation(); }());
+  </script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+@import '_settings';
+
+// This sets the hard values for a certain pixel width size for the mobile navigation
+// @mixin _mobile-navigation-size
+// @private
+// @param $width {Number} Pixel width
+@mixin _mobile-navigation-size ($width) {
+  .mod-mobile-navigation {
+    right: -1 * ($mobile-navigation-levels - 1) * $width;
+    width: 1 * $width * $mobile-navigation-levels;
+  }
+
+  .mod-site-container {
+    .show-mobile-navigation & {
+      transform: translate3d(-1 * $width, 0, 0);
+    }
+  }
+
+  .mobile-navigation__level {
+    width: 100% / $mobile-navigation-levels;
+  }
+}
+
+// Scrolling shouldn't happen on the html / body
+// Force it to full width
+html,
+body {
+  cursor: default;
+  height: 100%;
+  min-height: 100%;
+  position: relative;
+}
+
+// Wrap the site in a div that has disabled scrolling
+.mod-site-container {
+  background-color: #fff; // The background you'd want to give to the body element - DON'T make transparent
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+  z-index: 20;
+}
+
+// Fixed element contains a native, app like fixed header on mobile
+.site-container__fixed {
+  @media only all and (max-width: $mobile-navigation-breakpoint - 1) {
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, .15);
+    height: $mobile-navigation-fixed-height;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+    z-index: 20;
+  }
+}
+
+// Default toggle styles
+.site-container__mobile-navigation-toggle {
+  border: 0;
+  bottom: 0;
+  display: block;
+  line-height: $mobile-navigation-fixed-height;
+  position: absolute;
+  right: 0;
+  top: 0;
+  text-align: center;
+  text-decoration: none;
+  width: $mobile-navigation-fixed-height;
+
+  &:hover,
+  &:visited {
+    border: 0;
+  }
+
+  @media only all and (min-width: $mobile-navigation-breakpoint) { display: none; }
+}
+
+// Scrollable area is the content div that is, you guessed it, scrollable
+.site-container__scrollable {
+  @media only all and (max-width: $mobile-navigation-breakpoint - 1) {
+    box-sizing: border-box;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    overflow-y: scroll;
+    padding-top: $mobile-navigation-fixed-height;
+    position: relative;
+    z-index: 10;
+  }
+}
+
+// Set one or more breakpoints and widths for the mobile navigation
+@if type-of($mobile-navigation-width) == number {
+  @include _mobile-navigation-size($mobile-navigation-width);
+} @else {
+  @each $breakpoint, $width in $mobile-navigation-width {
+    @media only all and (min-width: $breakpoint) {
+      @include _mobile-navigation-size($width);
+    }
+  }
+}
+
+// The mobile navigation is positioned fixed underneath the website (.mod-site-container)
+.mod-mobile-navigation {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  background-color: #ddd;
+  z-index: 10;
+
+  @media only all and (min-width: $mobile-navigation-breakpoint) { display: none; }
+}
+
+// Multilevel support, all levels are specified by this container div
+.mobile-navigation__level {
+  float: left;
+  height: 100%;
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+  position: relative;
+}
+
+// Set CSS transitions for the mobile navigation animation
+.mod-site-container,
+.mod-mobile-navigation {
+  @media only all and (max-width: $mobile-navigation-breakpoint - 1px) {
+    transition: transform $mobile-navigation-animation-time $mobile-navigation-animation-easing;
+  }
+}
+
+// .show-mobile-navigation is a class that gets toggled on the body to show the navigation
+.show-mobile-navigation {
+  overflow: hidden;
+
+  .mod-site-container {
+    box-shadow: 0 0 20px rgba(0, 0, 0, .15);
+  }
+}
+
+// For all levels, create the corresponding [data-mobile-navigation-level]
+// so the navigation knows how much pixels to animate
+@if $mobile-navigation-levels > 1 {
+  @for $i from 2 through $mobile-navigation-levels {
+    [data-mobile-navigation-level="#{$i}"] {
+      .mod-mobile-navigation {
+        transform: translate3d(-100% / $mobile-navigation-levels * ($i - 1), 0, 0);
+      }
+    }
+  }
+}

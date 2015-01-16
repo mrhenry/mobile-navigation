@@ -1,0 +1,30 @@
+/// Width of the navigation when it's open.
+/// Don't make this bigger than ± 300px if you want it to behave nicely on an iPhone
+/// @access public
+/// @type Number | Map
+$mobile-navigation-width: 270px !default;
+
+/// Levels of subnavigation. Can't be less than one. Go crazy
+/// @access public
+/// @type Number
+$mobile-navigation-levels: 1 !default;
+
+/// Breakpoint that decides the mobile navigation shouldn't show anymore
+/// @access public
+/// @type Number
+$mobile-navigation-breakpoint: 768px !default;
+
+/// Animation time
+/// @access public
+/// @type Number
+$mobile-navigation-animation-time: 440ms !default;
+
+/// Animation easing function
+/// @access public
+/// @type String
+$mobile-navigation-animation-easing: ease-in-out !default;
+
+/// Height of the native UI like scrolling header
+/// @access public
+/// @type Number
+$mobile-navigation-fixed-height: 50px !default;
