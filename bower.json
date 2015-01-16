@@ -1,0 +1,24 @@
+{
+  "name": "mobile-navigation",
+  "version": "0.0.1",
+  "homepage": "https://github.com/mrhenry/mobile-navigation",
+  "authors": [
+    "Pieter Beulque <pieter@mrhenry.be>"
+  ],
+  "description": "Mobile navigation with built-in fixed header on mobile",
+  "main": "dist/_mobile-navigation.css.scss",
+  "keywords": [
+    "mobile",
+    "navigation",
+    "hamburger",
+    "menu"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
